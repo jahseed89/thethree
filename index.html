@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>My three.js app</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>My three.js app</title>
 
-    <link rel="stylesheet" href="styles.css">
-
-	</head>
-	<body>
-		
-
-        <div class="container">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- <div class="container">
             <h1>ThreeJS</h1>
             <button id="addCube">Button 1</button>
             <button id="removeCube">Button 2</button>
@@ -20,10 +17,48 @@
             <button id="removeCube">Button 6</button>
 
             <div id="canvas"></div>
+        </div> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
 
-        </div>
+    <script>
+      let scene = new THREE.Scene();
 
-        <script type="module" src="/main.js"></script>
-        
-	</body>
+      let camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.z = 5;
+
+      let renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setClearColor("#e5e5e5");
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      document.body.appendChild(renderer.domElement);
+
+      window.addEventListener("resize", () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+
+        camera.updateProjectionMatrix();
+      });
+
+      
+      let geometry = new THREE.SphereGeometry(1, 10, 10)
+      let material = THREE.MeshLamberMaterial({color: 0xFFCC00  })
+      
+      let mesh = new THREE.Mesh(geometry, material)
+
+      scene.add(mesh)
+
+      let light = new THREE.PointLight(0xFFFFFF, 1, 500)
+      light.position.set(10,0,25)
+      scene.add(light)
+
+      renderer.render(scene, camera);
+
+    </script>
+  </body>
 </html>

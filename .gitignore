@@ -1,6 +1,7 @@
 /.parcel-cache
 /.parcel-cache/
 .parcel-cache/
+.vscode/
 
 /node_modules
 /node_modules/

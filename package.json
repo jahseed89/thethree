@@ -18,9 +18,7 @@
     "url": "https://github.com/jahseed89/thethree/issues"
   },
   "homepage": "https://github.com/jahseed89/thethree#readme",
-  "devDependencies": {
-    "parcel": "^2.9.3"
-  },
+ 
   "dependencies": {
     "three": "^0.157.0"
   }
